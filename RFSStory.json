@@ -1,0 +1,65 @@
+{
+    "init"  :   {
+        "content": "Greetings traveler!",
+        "next_state": "choose",
+        "point_delta": 0,
+        "point_within": 0,
+        "action": "fight",
+        "dice": 20,//random generated within 1-20
+        "collecting": 0
+        "reward": "sword",//items listed
+        "inventory": 0
+    },
+
+    "choose" : {
+        "content": "Which direction do you want to travel to?",
+        "next_state": [
+                        {"input": "north",
+                            "content": "We will be traveling up the mountain. You encounter a an NPC. NPC seems like a shady alien, not knowing what the NPC will do or say, the player initiates conversation and greets the NPC cautiously. Alien stares at the player and asks for a favor. The request is: battle 3 bug-looking aliens (pests) and gather the resources from their body and give it to the NPC in exchange for resources and items: half set of the refined metal armor, head and body and resources for the aircraft. You encounter a pest",
+                            //for (x3 for fighting the 3 pests)
+                            "content":"Fight the first pest",
+                            "action":"fight",
+                            //roll the dice...if 0-10, take the hit, if 10-20, hit them to half health
+                            "dice":20, 
+                            //if the enemy has remaining health, do this task again, and once the enemy dies
+                            "point_within": 1, //when mission is complete and add the rewards for it too 
+                            "collecting": 1
+                            "content":"Fight the second pest!",
+                            "action":"fight",
+                            "dice":20,
+                            "point_within": 1,
+                            "content":"Right the third pest!",
+                            "action:":"fight",
+                            "dice":20,
+                            "point_within": 1,
+                            "reward": "sword",
+                            "inventory": 1,
+                            "pont_delta": 1,
+                            "content":"Which direction do you want to travel to?"
+                        },
+                        {"input": "east",
+                            "next_state": "We will be traveling in the jungle",
+                            "point_delta" : 1, //when mission is complete
+                            "content":"Which direction do you want to travel to?",
+                        }
+                        {"input": "west",
+                            "next_state": "We will be traveling to the desert",
+                            "point_delta" : 1, //when mission is complete
+                            "content":"Which direction do you want to travel to?",
+                        }
+                        {"input": "south",
+                            "next_state": "We will be traveling to the valley",
+                            "point_delta" : 1, //when mission is complete
+                            "content":"Which direction do you want to travel to?",
+                        }
+                        ],
+    },
+    "north" : {
+            "content" : "As you go further in the mountains",
+            "next_state" : "You encounter an enemy"
+    },
+    "east": {
+            "content" : "As you go further "
+    }
+
+}
