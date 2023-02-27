@@ -104,7 +104,7 @@
                 ],
         "hp": 5,
         "dmg":6,
-        "reward_prompt": "You successfully slain the enemies and made it alive, and obtain two prototype weapons (Prototype Excal and Prototype 76Soldier), and +3 skill points added to _ .",
+        "reward_prompt": "You successfully slain the enemies and made it alive, and obtain two prototype weapons (Prototype Excal and Prototype 76Soldier), and +3 skill points added to hp.",
         "victory_state": "planet a'pholi directions"
     },
 
@@ -135,7 +135,7 @@
         "prompt": "You chose the direct path, knowing it is a dangerous path. As you make it halfway into the route, an enemy is seen ahead. Last opportunity to turn back. (Type: 'battle' or 'stealth')",
         "next_state": [
                     {
-                        "prompt": "without having time to think the enemy shoots a projectile. you dodge, run towards and strike.",
+                        "prompt": "Without having time to think the enemy shoots a projectile. you dodge, run towards and strike. ('battle')",
                         "input": "battle",
                         "next_state": "battle_state"
                     },
@@ -144,14 +144,18 @@
                         "input": "stealth",
                         "next_state": "stealth1"
                     }
-                ]
+                ],
+        "hp":5,
+        "dmg":5,
+        "reward_prompt": "You obtain resources for the aircraft (1/4), and +1 skill point stat on damage.",
+        "victory_state": "planet a'pholi directions"
     },
 
     "stealth1": {
 
         "prompt": "You warn the elder that the pathway home is dangerous and that you can escort them, in a safer path for both of you to be unharmed. As you walk with the elder alien, you find out their name, Y'Xor, and know more about his past. Y'Xor has never encountered a human before, and he was an inventor. He made gadgets and one of the major accomplishments he made was a teleportation device to teleport him back home or anywhere within the planet. Y'Xor's homeland was invaded by another alien faction and during the time, he had a family. The alien faction were mercenaries and stole one of Y'Xor's inventions, which happened to be the teleport device. Since the mercenaries were ruthless, they went on a killing spree, killing most of the villagers, along with his family, but kept him alive on one condition. Y'xor has to make an invention that is able to teleport more than one person and teleports them out of the planet. Y'xor was hurting from the pain that the mercenaries did to him, that he ran away, in a secluded area of the planet. Y'xor wanted to live life under the radar and had to start new, filled with sorrow and loneliness. While Y'Xor was living alone, a wanderer was traveling around Y'Xor's makeshift house. Y'Xor was anxious and thought it was the mercenaries. Y'Xor being paranoid, got a blade weapon and cautiously checked outside. The young child in front of him was curious and was picking crops from Y'Xor's garden, oblivious to who owns the land. Y'Xor noticed the child and the child reminded him of his son. The child talked t o Y'Xor and said to have no family either, and that they were ones to keep each other company. As Y'Xor's story concludes, you reach the end of the route and Y'Xor tells you to wait. Y'Xor walks into his house and shortly after, holds items. You successfully escorted the elderly alien! The elderly alien supplies you with gifts and waves goodbye.",
-        "reward_prompt": "You obtain resources for the aircraft (1/4), and +1 skill point stat on _",
-        "next_state": "planet a'pholi directions"
+        "reward_prompt": "You obtain resources for the aircraft (1/4), and +1 skill point stat on damage.",
+        "victory_state": "planet a'pholi directions"
     },
 
     "stealth2":{
@@ -171,11 +175,9 @@
         "prompt": "The beast has a thirst for hunting and immediately notices you. Scared, but confident, you relax and think about how to tactically approach the situation. You notice there is a wound around the neck and you make that the area of your first move. (Type: 'fight)",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":10,
-        "dmg":10,
-        "enemy_hp":7,
-        "enemy_dmg":4,
-        "reward_prompt": "You successfully slain the beast and obtained resources for the aircraft (2/4 in progress of repairing aircraft), a prototype weapon (Prototype Genji Shuriken), and +1 skill point stat to _",
+        "hp":7,
+        "dmg":4,
+        "reward_prompt": "You successfully slain the beast and obtained resources for the aircraft (2/4 in progress of repairing aircraft), a prototype weapon (Prototype Genji Shuriken), and +1 skill point stat to damage.",
         "victory_state": "planet a'pholi directions"
     },
     
@@ -190,10 +192,8 @@
         "prompt": "The area is dimly lit, making it hard to see for pests, along with how dirty the environment is. As you scan the area, you see a figure running on the ground, hiding in a bush. As you go to check the bush, the pest comes out and is ready to attack. You get your weapon ready and attack the pest. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":10,
-        "dmg":5,
-        "enemy_hp": 3,
-        "enemy_dmg":3,
+        "hp": 3,
+        "dmg":3,
         "victory_state": "second_pest"
     },
 
@@ -202,11 +202,9 @@
         "prompt": "After you slain the first pest, you collect it's remains. You continue searching around the area and find the second pest with the back turned, you do a sneak attack on it. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":10,
-        "dmg":5,
-        "enemy_hp": 3,
-        "enemy_dmg":3,
-        "victory_state": "second_pest"
+        "hp": 3,
+        "dmg":3,
+        "victory_state": "third_pest"
     },
 
     "third_pest":{
@@ -214,11 +212,9 @@
         "prompt": "After you slain the second pest and collect the drop, you continue searching around the area. This pest is tricky because this pest likes to hang around cracks of the ground, making it hard to attack. Eventually, the pest tries to attack you, but you dodge and follow up with an attack. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":10,
-        "dmg":5,
-        "enemy_hp": 3,
-        "enemy_dmg":3,
-        "reward_prompt": "You successfully slain the pests and obtained resources for the aircraft (3/4 in progress of repairing aircraft) and +1 skill point stat added to _.",
+        "hp": 3,
+        "dmg":3,
+        "reward_prompt": "You successfully slain the pests and obtained resources for the aircraft (3/4 in progress of repairing aircraft) and +1 skill point stat added to hp.",
         "victory_state": "planet a'pholi directions"
     },
 
@@ -229,19 +225,15 @@
             {
                 "prompt": "without having time to think the enemy shoots a projectile. you dodge, run towards and strike.",
                 "input": "fight",
-                "next_state": "battle_state"
+                "next_state": "fight_1_guard"
             },
             {
                 "prompt": "attempting to de-escalate the situation",
                 "input": "stealth",
                 "next_state": "stealth2"
             }
-        ],
-        "hp":20,
-        "dmg":10,
-        "enemy_hp":5,
-        "enemy_dmg":5,
-        "victory_state": "fight_1_guard"
+        ]
+        
     },
 
 
@@ -250,10 +242,8 @@
         "prompt": "The first guard notices you, ready to defend. You ready your weapon. The guard tries to shield-bash you to lose your stance, but you're agile enough to dodge. While the guard is standing still for a short moment, you attack. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":10,
-        "dmg":5,
-        "enemy_hp": 3,
-        "enemy_dmg":3,
+        "hp": 3,
+        "dmg":3,
         "victory_state": "fight_2_guard"
     },  
 
@@ -261,10 +251,8 @@
         "prompt": "The fighting caught attention of another guard and runs towards you. As your initial instinct, you block and counter. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":10,
-        "dmg":5,
-        "enemy_hp": 3,
-        "enemy_dmg":3,
+        "hp": 3,
+        "dmg":3,
         "victory_state": "a'pholi_boss"
     },
     
@@ -272,18 +260,57 @@
         "prompt": "A'Pholi's expression was a bit of shock because it is probably his first time seeing a human. Shortly, A'Pholi's expression fades away and does not see me as a threat and gets up from his throne. Due to A'Pholi having god-like abilities and immense strength, A'Pholi intimidates you, leaving you frozen for a moment and A'Pholi is ready to strike. All of a sudden, you get an adrenaline rush, having more health and damage and react quickly to make the first move ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":30,
-        "dmg":15,
-        "enemy_hp": 20,
-        "enemy_dmg": 6,
-        "reward_prompt": "As you slain the leader, A'Pholi, you conquer the planet and become the new leader. You gain a plentiful amount of resources and those resources, along with the ones that were gained throughout the missions, all collectively repair the aircraft. You gain +5 stats on _,_",
+        "hp": 10,
+        "dmg": 6,
+        "reward_prompt": "As you slain the leader, A'Pholi, you conquer the planet and become the new leader. You gain a plentiful amount of resources and those resources, along with the ones that were gained throughout the missions, all collectively repair the aircraft. You gain +5 stats on hp and damage",
         "victory_state": "repair_aircraft"
     },
 
     "repair_aircraft":{
         "prompt": "You reflect on the adventures that you experienced, living as the teen, and decides to take a trip down memory lane, the dying planet, Earth. Years go by, and the teenager became an adult, due to the many adventures and exploration. The player goes in the aircraft and directs travel to Earth. Aircraft survives and player lands on the base of where their house was located. All remnants of the house were mostly destroyed, with a few objects kept intact. One of the objects that remained was a safe. The player checks on the safe and surprisingly was unlocked. There was currency, valuables, and a folder. The folder held secrets to future plans of what Dad was working on, along with what Mom was working on. What was found out after looking through the items in the safe was a surprise, a secret that the parents hid from the now young adult had piqued interest. The interesting item in the safe happens to be a family photo. There was a stain on the family photo, covering a figure. While smudging off the stain, taking a closer inspection, it seemed to be another family member. The family member seemed to be around the same age as the teenager then. It was a shocking revelation to find out that there was another sibling, rather than being the only child. The young adult had many questions and feelings, some of which cannot be answered, due to deceased parents. Many questions rose: Why were they hiding the fact that I have a sibling?, Who is the sibling?, Why did I never meet them?, Why were they not a part of the family? The emotions of the young adult were racing, and completely stopped when a figure from the distance showed up. Why is there a figure? How did they survive the meteor? The figure looked mutilated and had a missing arm and nose. The young adult was shocked and cautiously backed away from the figure. The figure yells the young adult’s name. The young adult was left in confusion, whether to fight or be amicable and converse with the figure. The young adult did not know if the figure could be hostile. As the young adult was preparing to attack, the unknown figure comes closer. The figure says, “I’ve been looking for you, my long-lost sibling”. Whether the young believe what the unknown figure said, is still deciding on whether to fight the figure or talk to the figure.",
+        "next_state":"unknown_figure" 
     },
 
+    "unknown_figure":{
+        "prompt": "You decide whether to hear out the figure, or to battle the figure ('fight' or 'talk')",
+        "next_state":[
+            {   
+                "input": "fight",
+                "next_state": "final_battle"
+            },
+            {
+                "input": "talk",
+                "next_state": "final_conversation"
+            }
+        ]
+        
+    },
+
+    "final_battle":{
+        "prompt": "You choose to fight the figure, who happens to be a family member who survived the meteor, has a strong aura permeating, intimidating you. Your willpower and determination with adrenaline boosts your health and damage and you are ready to face the figure. ('fight')",
+        "input": "fight",
+        "next_state": "battle_state",
+        "hp": 10,
+        "dmg": 6,
+        "reward_prompt": "You won the 'Lone Achievement' with a Prototype weapon (Prototype Pharah: rocket launcher) and +10 stats on damage.",
+        "victory_state": "end"
+    },
+
+    "final_conversation":{
+        "prompt": "Maybe they are part of the family. You hear what the figure has to say. ('talk')",
+        "input": "talk",
+        "next_state": "figure_backstory"
+    },
+
+    "figure_backstory":{
+        "prompt": "You approach the unknown figure and begin to chat with them. You ask why they were not part of the family. The figure states that they found out that they were taken from birth and into a lab, as part of an experiment. All the experimentations were testing how they would be able to survive off of experimental chemicals, that's why I look the way I look, but I also have benefited from the chemicals because I was able to survive the meteor, along with having super strength and health. As you get to know the figure more, you find out their name, which is P'yl, their age is the same as yours, and you and P'yl wish to have a new journey, either to build what remains on Earth or explore different planets and potentially find other life-beings either friendly or another human who survived and escaped", 
+        "reward_prompt": "You won the 'Family Forever Achievement' with a Prototype weapon (Prototype Junkrat: grenade launcher) and +10 stats on hp.",
+        "victory_state": "end"
+    },
+
+    "end":{
+        "prompt":"You journey, either by your lonesome or with a companion, finding out the unknowns in the universe. Whether you'll build society on the dying planet or on other planets, or conquer other planets and become a warlord, that is up to your decision. Whatever choices you make, will affect what will happen in the future. Good luck on the journey, and thank you for playing!"
+    },
 
     "battle_state":{
         
