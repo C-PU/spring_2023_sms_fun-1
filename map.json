@@ -196,7 +196,7 @@
         "next_state": "battle_state",
         "hp":100,
         "dmg":20,
-        "victory_state": "second_pest"
+        "victory_state": "third_pest"
     },
 
     "third_pest":{
