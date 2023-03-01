@@ -257,8 +257,17 @@ class player(Character):
                     self.damage +=1
                     output.append(enemy_dmg_taken)
                     output.append(f'you defeated {self.currentEnemy.name}. Your score is {self.score}')
-                    output.append(MY_GAME_LOGIC[self.state]['prompt'])
                     self.currentEnemy = None #  Remove the defeated enemy
+                    output.append(MY_GAME_LOGIC[self.state]['prompt'])
+                    
+                    #completed mission check
+                    if self.score >= 8 and self.state == "planet a'pholi directions" and self.visited_states.issuperset(missions[self.mission_index]):
+                        self.state = "complete_directions"
+                        #increment mission index to next mission set
+                        self.mission_index +=1
+                        output.append( MY_GAME_LOGIC[ self.state ]['prompt'])
+                        break
+                        
                     if type( MY_GAME_LOGIC[ self.state ]['next_state'] ) != str: # multiple choices
                         for z in MY_GAME_LOGIC[self.state]['next_state']:
                             if (z['next_state'] == 'battle_state' or z['next_state'] == 'dialogue1' or z['next_state'] == 'dialogue2' or z['next_state'] == 'dialogue3'):
