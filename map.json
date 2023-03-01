@@ -262,7 +262,7 @@
         "prompt": "The first guard notices you, ready to defend. You ready your weapon. The guard tries to shield-bash you to lose your stance, but you're agile enough to dodge. While the guard is standing still for a short moment, you attack. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":150,
+        "hp":100,
         "dmg":10,
         "victory_state": "fight_2_guard"
     },  
@@ -271,7 +271,7 @@
         "prompt": "The fighting caught attention of another guard and runs towards you. As your initial instinct, you block and counter. ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":150,
+        "hp":100,
         "dmg":10,
         "victory_state": "a'pholi_boss"
     },
@@ -280,7 +280,7 @@
         "prompt": "A'Pholi's expression was a bit of shock because it is probably his first time seeing a human. Shortly, A'Pholi's expression fades away and does not see me as a threat and gets up from his throne. Due to A'Pholi having god-like abilities and immense strength, A'Pholi intimidates you, leaving you frozen for a moment and A'Pholi is ready to strike. All of a sudden, you get an adrenaline rush, having more health and damage and react quickly to make the first move ('fight')",
         "input": "fight",
         "next_state": "battle_state",
-        "hp":200,
+        "hp":120,
         "dmg":15,
         "reward_prompt": "As you slain the leader, A'Pholi, you conquer the planet and become the new leader. You gain a plentiful amount of resources and those resources, along with the ones that were gained throughout the missions, all collectively repair the aircraft. You gain +5 stats on hp and damage",
         "victory_state": "repair_aircraft"
