@@ -3,7 +3,10 @@ import random
 import difflib
 from tools.logging import logger
 
-first_mission = {"east","west","north","south"} #first_mission set to compare with visited_states set 
+first_mission = {"east","west","north","south"} #first_mission set to compare with visited_states set
+second_mission = {"repair_aircraft","fight_1_gaurd","fight_2_gaurd","a'pholi_boss"}
+third_mission = {"for future installation"}
+missions = [first_mission,second_mission, third_mission]
 
 MY_GAME_LOGIC = {}
 with open('map.json', 'r') as my_file:
@@ -18,7 +21,7 @@ class Enemy():
 
     def enemy_attack(self, main_character):
         crit_dmg = self.damage
-        crit_chance = random.randint(1,5)
+        crit_chance = random.randint(1,7)
         
         if crit_chance == 1:
             self.damage *= 2
@@ -64,7 +67,9 @@ class player(Character):
         self.last_prompt = None
         
         self.visited_states = set()
+        self.mission_index = 0 #tracks what mission player is on
         self.state = "main_menu"
+        
         super().__init__(phone_number, attack, health)
 
     def get_mm(self):
@@ -169,10 +174,7 @@ class player(Character):
                     self.currentEnemy = Enemy(self.state, MY_GAME_LOGIC[self.state]['hp'], MY_GAME_LOGIC[self.state]['dmg'])
                     print("DEBUG, ENEMY SELECTED!")
                     
-                #if msg_input.lower() ==  [self.state]['next_state']['input']
-                    #self.state = next_state['next_state']
-                 
-                #logic to prevent player from revisiting paths
+                #logic to record players visited paths
                 if self.state not in self.visited_states:
                     self.visited_states.add(self.state)
                         
@@ -200,15 +202,17 @@ class player(Character):
 
         while True:
             print('Current state DEBUG: %s\n' % self.state)
-            print(f"states players has visited: {self.visited_states}")
-            if self.state == "first_pest":
+            
+            if self.state == "first_pest" or self.state == "fight_1_guard":
                 self.currentEnemy = Enemy(self.state, MY_GAME_LOGIC[self.state]['hp'], MY_GAME_LOGIC[self.state]['dmg'])
                 
             #logic for clearing all paths
-            if self.score >= 9 and self.state == "planet a'pholi directions" and self.visited_states.issuperset(first_mission):
+            if self.score >= 8 and self.state == "planet a'pholi directions" and self.visited_states.issuperset(missions[self.mission_index]):
                 self.state = "complete_directions"
+                self.mission_index +=1
+
                 output.append( MY_GAME_LOGIC[ self.state ]['prompt'])
-                self.state = MY_GAME_LOGIC[self.state]['next_state']
+                break
                 
             output.append( MY_GAME_LOGIC[ self.state ]['prompt'])
             
